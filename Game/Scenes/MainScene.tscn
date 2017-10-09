@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scenes/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/PaintHolder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Guy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Status.tscn" type="PackedScene" id=4]
+
+[node name="MainScene" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="PaintHolder" parent="." instance=ExtResource( 2 )]
+
+z/z = -1
+guy_path = NodePath("Guy")
+status_path = NodePath("../Status")
+
+[node name="Guy" parent="PaintHolder" instance=ExtResource( 3 )]
+
+paint_holder_path = NodePath("..")
+status_path = NodePath("../../Status")
+
+[node name="Status" parent="." instance=ExtResource( 4 )]
+
+

@@ -1,0 +1,35 @@
+[gd_resource type="CanvasItemMaterial" load_steps=2 format=1]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = {
+"fragment": "uniform color r;
+uniform color r2;
+uniform color c;
+uniform color c2;
+
+if (COLOR.r > r.r - 0.1 && COLOR.r < r.r + 0.1 && COLOR.b > r.b - 0.1 && COLOR.b < r.b + 0.1 && COLOR.g > r.g - 0.1 && COLOR.g < r.g + 0.1)
+{
+	COLOR = c;
+}
+
+if (COLOR.r > r2.r - 0.1 && COLOR.r < r2.r + 0.1 && COLOR.b > r2.b - 0.1 && COLOR.b < r2.b + 0.1 && COLOR.g > r2.g - 0.1 && COLOR.g < r2.g + 0.1)
+{
+	COLOR = c2;
+}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[resource]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/r = Color( 0.0313726, 0.501961, 0.0980392, 1 )
+shader_param/r2 = Color( 1, 0.870588, 0, 1 )
+shader_param/c = Color( 0, 0, 0, 1 )
+shader_param/c2 = Color( 0, 0, 0, 1 )
+

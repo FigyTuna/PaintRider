@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Scenes/Guy.gd" type="Script" id=1]
+[ext_resource path="res://Images/PaintRiderFall.png" type="Texture" id=2]
+[ext_resource path="res://Images/PaintRiderRise.png" type="Texture" id=3]
+[ext_resource path="res://Materials/ColorShader.tres" type="CanvasItemMaterial" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Guy" type="Area2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 3.14716, 0, 0, 3.14716, -0.179784, 0.266874 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+paint_holder_path = null
+status_path = null
+fall_texture = ExtResource( 2 )
+rise_texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+material/material = ExtResource( 4 )
+transform/rot = -90.0
+z/z = 1
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( -0.179784, 0.266874 )
+transform/scale = Vector2( 3.14716, 3.14716 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
+
+
