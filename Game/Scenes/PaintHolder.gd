@@ -23,6 +23,8 @@ const SPEED_UP = 1.01
 const PAINT_USE = 15
 const UPDATE_TIME = 1
 const BACKGROUND_WIDTH = 4000
+const SCREEN_SIZE_X = 1024
+const SCREEN_SIZE_Y = 600
 
 var speed = BASE_SPEED
 var max_speed = speed

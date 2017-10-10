@@ -30,7 +30,7 @@ func _ready():
 	global.game_start()
 
 func _process(delta):
-	if get_pos().y > OS.get_window_size().y + LOWER_BOUND:
+	if get_pos().y > paint_holder.SCREEN_SIZE_Y + LOWER_BOUND:
 		paint_holder.die()
 
 func _fixed_process(delta):

@@ -2,7 +2,6 @@ extends Node
 
 const SPAWN_X = 50
 const EXTRA_LOWER_Y_BUFFER = 64
-var window_size = OS.get_window_size()
 
 export (Resource)var resource
 export (int)var y_buffer
@@ -25,5 +24,5 @@ func _process(delta):
 
 func spawn():
 	var obj = resource.instance()
-	obj.set_pos(Vector2(window_size.x + SPAWN_X  - parent.get_pos().x, rand_range(y_buffer, window_size.y - y_buffer - EXTRA_LOWER_Y_BUFFER)))
+	obj.set_pos(Vector2(parent.SCREEN_SIZE_X + SPAWN_X  - parent.get_pos().x, rand_range(y_buffer, parent.SCREEN_SIZE_Y - y_buffer - EXTRA_LOWER_Y_BUFFER)))
 	parent.add_child(obj)
