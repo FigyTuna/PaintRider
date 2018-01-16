@@ -14,11 +14,23 @@ func _ready():
 	set_process(true)
 
 func _input(event):
+	var pressed = false
+	var released = false
 	if event.type == InputEvent.KEY:
-		if event.is_action_pressed("game_primary") and not paint_holder.button_down:
-			paint_holder.set_button_down(true)
-		elif event.is_action_released("game_primary") and paint_holder.button_down:
-			paint_holder.set_button_down(false)
+		if event.is_action_pressed("game_primary"):
+			pressed = true
+		elif event.is_action_released("game_primary"):
+			released = true
+	if event.type == InputEvent.SCREEN_TOUCH:
+		if event.is_pressed():
+			pressed = true
+		else:
+			released = true
+	
+	if pressed and not paint_holder.button_down:
+		paint_holder.set_button_down(true)
+	elif released and paint_holder.button_down:
+		paint_holder.set_button_down(false)
 
 func _process(delta):
 	wait_timer += delta + delta * 0.5 * (paint_holder.speed - paint_holder.BASE_SPEED)
